@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مجموعة وظايف</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F8F9FE;--sur:#FFF;--sur2:#F2F4FB;--bor:#E2E6F3;--tx:#0D1117;--tx2:#3D4A6B;--mu:#8A96B8;--ac:#2754EB;--ac2:#1A3DC0;--acl:#EEF2FD;--gr:#059669;--grl:#ECFDF5;--re:#DC2626;--rel:#FEF2F2;--bl:#0369A1;--bll:#EFF6FF;--pu:#7C3AED;--pul:#F5F3FF;--or:#D97706;--orl:#FFFBEB;--sh:0 2px 12px rgba(13,17,55,.07);--shl:0 8px 32px rgba(13,17,55,.12);--r:13px;--nav:58px}
+body.dark{--bg:#080C18;--sur:#0F1526;--sur2:#161D32;--bor:#232C47;--tx:#EDF0FC;--tx2:#8A96C8;--mu:#4A5578;--ac:#4B75FF;--acl:#141C3D;--grl:#022C22;--rel:#1C0808;--bll:#082032;--pul:#1A1040;--orl:#1C1200}
+body{font-family:'IBM Plex Sans Arabic','Tajawal',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh}
+
+/* LANDING */
+#landing{position:fixed;inset:0;z-index:999;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center}
+.land-logo{width:70px;height:70px;background:linear-gradient(135deg,#2754EB,#7C3AED);border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 18px;box-shadow:0 8px 28px rgba(39,84,235,.3);color:#fff;font-family:'Tajawal',sans-serif;font-weight:900}
+.land-title{font-family:'Tajawal',sans-serif;font-size:2rem;font-weight:900;margin-bottom:8px;background:linear-gradient(135deg,#2754EB,#7C3AED);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.land-sub{font-size:13px;color:var(--mu);margin-bottom:28px;line-height:1.7}
+.land-feats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:28px;width:100%;max-width:380px}
+.lf{background:var(--sur);border:1px solid var(--bor);border-radius:12px;padding:14px;text-align:center;box-shadow:var(--sh)}
+.lf-ic{font-size:22px;margin-bottom:5px}
+.lf-t{font-size:12px;font-weight:700;color:var(--tx)}
+.lf-d{font-size:10px;color:var(--mu);margin-top:2px}
+.land-btn{padding:14px 0;border:none;border-radius:12px;background:linear-gradient(135deg,#2754EB,#1A3DC0);color:#fff;font-family:'Tajawal',sans-serif;font-size:15px;font-weight:700;cursor:pointer;width:100%;max-width:320px;box-shadow:0 4px 18px rgba(39,84,235,.3)}
+
+/* PROFILE SETUP */
+#profileSetup{position:fixed;inset:0;z-index:998;background:var(--bg);display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+#profileSetup.show{display:flex}
+.pbox{background:var(--sur);border:1px solid var(--bor);border-radius:16px;padding:26px;width:100%;max-width:460px;box-shadow:var(--shl)}
+.pbox h2{font-family:'Tajawal',sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:4px}
+.pbox p{font-size:12px;color:var(--mu);margin-bottom:18px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;height:var(--nav);background:rgba(248,249,254,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--bor);display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+body.dark nav{background:rgba(8,12,24,.92)}
+.brand{display:flex;align-items:center;gap:9px}
+.nlogo{width:32px;height:32px;background:linear-gradient(135deg,#2754EB,#7C3AED);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:14px;font-family:'Tajawal',sans-serif}
+.ntitle{font-size:14px;font-weight:700}
+.nsub{font-size:10px;color:var(--mu)}
+.nacts{display:flex;gap:7px;align-items:center}
+.nbtn{display:flex;align-items:center;gap:5px;padding:5px 10px;border:1px solid var(--bor);border-radius:100px;background:var(--sur);cursor:pointer;font-size:11px;font-weight:600;color:var(--mu);font-family:'IBM Plex Sans Arabic',sans-serif}
+.nbtn:hover{border-color:var(--ac);color:var(--ac)}
+.trk{width:24px;height:14px;background:var(--bor);border-radius:100px;position:relative}
+.trt{position:absolute;top:2px;right:2px;width:10px;height:10px;background:var(--mu);border-radius:50%;transition:all .2s}
+body.dark .trk{background:var(--ac)}
+body.dark .trt{right:unset;left:2px;background:#fff}
+
+/* LAYOUT */
+.layout{display:flex;min-height:calc(100vh - var(--nav))}
+.sidebar{width:185px;flex-shrink:0;background:var(--sur);border-left:1px solid var(--bor);padding:12px 6px;position:sticky;top:var(--nav);height:calc(100vh - var(--nav));overflow-y:auto;scrollbar-width:none}
+.sidebar::-webkit-scrollbar{display:none}
+.si{display:flex;align-items:center;gap:8px;padding:9px 10px;width:100%;background:none;border:none;border-radius:9px;font-family:'IBM Plex Sans Arabic',sans-serif;font-size:12px;font-weight:500;color:var(--mu);cursor:pointer;text-align:right;margin-bottom:2px}
+.si:hover{background:var(--sur2);color:var(--tx2)}
+.si.on{color:var(--ac);background:var(--acl);font-weight:700}
+.si-ic{font-size:14px;width:18px;text-align:center;flex-shrink:0}
+.content{flex:1;padding:24px 20px 80px;max-width:760px}
+
+/* SECTIONS */
+.sec{display:none}
+.sec.on{display:block;animation:fu .3s ease both}
+@keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* HERO */
+.hero{margin-bottom:20px}
+.hbadge{display:inline-block;background:var(--acl);color:var(--ac);font-size:10px;font-weight:700;padding:3px 11px;border-radius:100px;margin-bottom:9px;border:1px solid rgba(39,84,235,.15)}
+.hero h1{font-family:'Tajawal',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:800;line-height:1.2;margin-bottom:5px}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,#06B6D4,#3B82F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero h1 span{background:linear-gradient(135deg,#06B6D4,#3B82F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--mu);font-size:12px}
+
+/* CARD */
+.card{background:var(--sur);border:1px solid var(--bor);border-radius:var(--r);padding:18px;box-shadow:var(--sh);margin-bottom:12px}
+.ctitle{font-size:12px;font-weight:700;color:var(--tx2);margin-bottom:12px;display:flex;align-items:center;gap:6px;padding-bottom:8px;border-bottom:1px solid var(--bor)}
+.ctitle::before{content:'';width:3px;height:12px;background:linear-gradient(var(--ac),var(--pu));border-radius:2px;flex-shrink:0}
+.lbl{font-size:10px;font-weight:600;color:var(--mu);letter-spacing:.7px;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.lbl::after{content:'';flex:1;height:1px;background:var(--bor)}
+
+/* FORM ELEMENTS */
+input,textarea,select{font-family:'IBM Plex Sans Arabic',sans-serif}
+select{width:100%;background:var(--sur2);border:1.5px solid var(--bor);border-radius:9px;padding:9px 12px;color:var(--tx);font-size:13px;outline:none;cursor:pointer;margin-bottom:10px;-webkit-appearance:none}
+select:focus{border-color:var(--ac)}
+.iw{position:relative;margin-bottom:9px}
+.iw input,.iw textarea{width:100%;background:var(--sur2);border:1.5px solid var(--bor);border-radius:9px;padding:9px 12px 9px 34px;color:var(--tx);font-size:13px;outline:none;resize:vertical}
+.iw input::placeholder,.iw textarea::placeholder{color:var(--mu)}
+.iw input:focus,.iw textarea:focus{border-color:var(--ac)}
+.ii{position:absolute;left:10px;top:10px;font-size:13px;pointer-events:none;opacity:.5}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.tag{background:var(--sur2);border:1.5px solid var(--bor);color:var(--tx2);font-size:11px;font-weight:500;padding:4px 11px;border-radius:100px;cursor:pointer;font-family:'IBM Plex Sans Arabic',sans-serif}
+.tag:hover,.tag.on{border-color:var(--ac);color:var(--ac);background:var(--acl)}
+
+/* LANG */
+.langs{display:flex;gap:5px;margin-bottom:11px;flex-wrap:wrap}
+.lb{padding:5px 11px;border-radius:100px;border:1.5px solid var(--bor);background:var(--sur2);color:var(--mu);font-family:'IBM Plex Sans Arabic',sans-serif;font-size:11px;font-weight:500;cursor:pointer}
+.lb.on{border-color:var(--ac);color:var(--ac);background:var(--acl)}
+
+/* PLATFORMS */
+.plats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
+.pb{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 5px;border-radius:10px;border:1.5px solid var(--bor);background:var(--sur2);cursor:pointer;font-family:'IBM Plex Sans Arabic',sans-serif;font-size:10px;font-weight:500;color:var(--mu);position:relative}
+.pb-ic{font-size:18px}
+.pb-ck{position:absolute;top:4px;left:4px;width:13px;height:13px;border-radius:50%;border:1.5px solid var(--bor);background:var(--sur);display:flex;align-items:center;justify-content:center;font-size:7px}
+.pb.j.on{border-color:var(--gr);background:var(--grl);color:var(--gr)}
+.pb.j.on .pb-ck{background:var(--gr);border-color:var(--gr);color:#fff}
+.pb.b.on{border-color:var(--re);background:var(--rel);color:var(--re)}
+.pb.b.on .pb-ck{background:var(--re);border-color:var(--re);color:#fff}
+.pb.l.on{border-color:var(--bl);background:var(--bll);color:var(--bl)}
+.pb.l.on .pb-ck{background:var(--bl);border-color:var(--bl);color:#fff}
+.pb.q.on{border-color:var(--pu);background:var(--pul);color:var(--pu)}
+.pb.q.on .pb-ck{background:var(--pu);border-color:var(--pu);color:#fff}
+
+/* BTN */
+.btn{width:100%;padding:11px;border:none;border-radius:10px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;font-family:'Tajawal',sans-serif;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;box-shadow:0 3px 12px rgba(39,84,235,.25)}
+.btn:hover{opacity:.92}
+.btn.sec{background:var(--sur2);color:var(--tx2);box-shadow:none;border:1.5px solid var(--bor)}
+.btn.sm{padding:7px 12px;font-size:11px;border-radius:8px;width:auto}
+.brow{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+
+/* SEARCH RESULTS */
+.rlist{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.ri{background:var(--sur);border:1.5px solid var(--bor);border-radius:10px;overflow:hidden;box-shadow:var(--sh)}
+.ri:hover{border-color:var(--ac)}
+.rl{display:flex;align-items:center;gap:11px;padding:12px 14px;text-decoration:none;color:inherit}
+.ric{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.ric.j{background:var(--grl)}.ric.b{background:var(--rel)}.ric.l{background:var(--bll)}.ric.q{background:var(--pul)}
+.rt{flex:1}
+.rn{font-size:12px;font-weight:600;margin-bottom:2px}
+.rd{font-size:10px;color:var(--mu)}
+.ra{color:var(--mu);font-size:14px}
+
+/* HISTORY */
+.hist{background:var(--acl);border:1px solid rgba(39,84,235,.12);border-radius:9px;padding:9px 12px;margin-top:9px}
+.hist-t{font-size:10px;color:var(--ac);font-weight:700;margin-bottom:5px}
+.htags{display:flex;flex-wrap:wrap;gap:4px}
+.ht{background:var(--sur);border:1px solid var(--bor);color:var(--tx2);font-size:10px;padding:2px 9px;border-radius:100px;cursor:pointer;font-family:'IBM Plex Sans Arabic',sans-serif}
+.ht:hover{border-color:var(--ac);color:var(--ac)}
+
+/* CV TABS */
+.cvtabs{display:flex;gap:4px;margin-bottom:12px;background:var(--sur2);padding:4px;border-radius:10px;border:1px solid var(--bor)}
+.cvtab{padding:6px 12px;border-radius:7px;border:none;background:transparent;color:var(--mu);font-family:'IBM Plex Sans Arabic',sans-serif;font-size:11px;font-weight:500;cursor:pointer;flex:1;text-align:center}
+.cvtab.on{background:var(--sur);color:var(--ac);font-weight:700;box-shadow:var(--sh);border:1px solid var(--bor)}
+.cvm{display:none}
+.cvm.on{display:block;animation:fu .3s ease both}
+.ats-tip{background:var(--grl);border:1px solid rgba(5,150,105,.2);border-radius:8px;padding:8px 12px;font-size:11px;color:var(--gr);font-weight:500;margin-bottom:11px}
+
+/* CV PREVIEW */
+.cvbox{background:#fff;color:#1a1f36;border:1px solid #e4e8f5;border-radius:10px;padding:22px;margin-top:11px;font-family:'IBM Plex Sans Arabic',sans-serif;line-height:1.9;direction:rtl;box-shadow:0 3px 16px rgba(0,0,0,.06)}
+.cvbox.en{direction:ltr}
+.cvbox h2{font-size:18px;font-weight:700;margin-bottom:3px;color:#2754EB;font-family:'Tajawal',sans-serif}
+.cvbox .cvc{font-size:10px;color:#8A96B8;margin-bottom:14px;display:flex;flex-wrap:wrap;gap:10px;padding-bottom:10px;border-bottom:1px solid #e4e8f5}
+.cvbox .cvs{margin-bottom:11px}
+.cvbox .cvst{font-size:9px;font-weight:700;letter-spacing:1.5px;color:#2754EB;margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.cvbox .cvst::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(39,84,235,.3),transparent)}
+.cvbox .cvi{font-size:11px;white-space:pre-wrap;color:#3D4A6B}
+.cvbox-wrap{white-space:pre-wrap;font-size:12px;line-height:1.9;color:#3D4A6B}
+
+/* INTERVIEW */
+.chatbox{background:var(--sur2);border:1px solid var(--bor);border-radius:10px;min-height:160px;max-height:360px;overflow-y:auto;padding:12px;margin-bottom:8px;display:flex;flex-direction:column;gap:7px}
+.msg{max-width:80%;padding:8px 12px;border-radius:10px;font-size:12px;line-height:1.6}
+.msg.ai{background:var(--sur);border:1px solid var(--bor);color:var(--tx);align-self:flex-start}
+.msg.user{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;align-self:flex-end}
+.msg.fb{background:var(--grl);border:1px solid rgba(5,150,105,.2);color:var(--tx);align-self:flex-start;font-size:11px}
+.chat-row{display:flex;gap:6px}
+.chat-row input{flex:1;background:var(--sur2);border:1.5px solid var(--bor);border-radius:8px;padding:9px 12px;color:var(--tx);font-family:'IBM Plex Sans Arabic',sans-serif;font-size:12px;outline:none}
+.chat-row input:focus{border-color:var(--ac)}
+.csend{padding:9px 14px;border:none;border-radius:8px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;font-family:'Tajawal',sans-serif;font-size:12px;font-weight:700;cursor:pointer}
+
+/* SALARY */
+.sal-res{background:var(--acl);border:1.5px solid rgba(39,84,235,.2);border-radius:12px;padding:20px;text-align:center;margin-top:11px}
+.sal-num{font-family:'Tajawal',sans-serif;font-size:1.9rem;font-weight:900;color:var(--ac);margin-bottom:3px}
+.sal-range{font-size:11px;color:var(--tx2)}
+.sal-chips{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:9px}
+.sch{background:var(--sur);border:1px solid var(--bor);color:var(--tx2);font-size:10px;padding:2px 10px;border-radius:100px}
+
+/* TRACKER */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
+.stb{background:var(--sur);border:1px solid var(--bor);border-radius:10px;padding:10px;text-align:center}
+.stn{font-family:'Tajawal',sans-serif;font-size:1.5rem;font-weight:900;margin-bottom:1px;line-height:1}
+.stl{font-size:9px;color:var(--mu)}
+.stb.t .stn{color:var(--ac)}.stb.p .stn{color:var(--or)}.stb.i .stn{color:var(--bl)}.stb.a .stn{color:var(--gr)}
+.apps{display:flex;flex-direction:column;gap:6px;margin-top:9px}
+.app{background:var(--sur);border:1px solid var(--bor);border-radius:10px;padding:10px 13px;display:flex;align-items:center;gap:8px}
+.app-inf{flex:1}
+.app-t{font-size:12px;font-weight:600}
+.app-s{font-size:10px;color:var(--mu)}
+.app-sel{background:var(--sur2);border:1px solid var(--bor);border-radius:6px;padding:3px 6px;color:var(--tx);font-family:'IBM Plex Sans Arabic',sans-serif;font-size:10px;cursor:pointer;outline:none}
+.app-del{background:none;border:none;cursor:pointer;color:var(--mu);font-size:14px;padding:3px}
+.app-del:hover{color:var(--re)}
+.sort-row{display:flex;align-items:center;gap:7px;margin-bottom:11px;background:var(--sur2);padding:6px 10px;border-radius:8px;border:1px solid var(--bor)}
+.sort-row span{font-size:10px;font-weight:600;color:var(--mu);white-space:nowrap}
+.sort-row select{width:auto;margin-bottom:0;padding:3px 8px;font-size:10px}
+
+/* CHIPS */
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{background:var(--sur2);border:1px solid var(--bor);color:var(--tx2);font-size:10px;padding:3px 9px;border-radius:100px;font-weight:500}
+.chip.g{background:var(--grl);border-color:rgba(5,150,105,.3);color:var(--gr)}
+.chip.b{background:var(--bll);border-color:rgba(3,105,161,.3);color:var(--bl)}
+.chip.o{background:var(--orl);border-color:rgba(217,119,6,.3);color:var(--or)}
+.chip.r{background:var(--rel);border-color:rgba(220,38,38,.3);color:var(--re)}
+
+/* SPECS */
+.sgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:11px}
+.sc{background:var(--sur);border:1.5px solid var(--bor);border-radius:11px;padding:14px;cursor:pointer;text-align:center}
+.sc:hover{border-color:var(--ac)}
+.sc.on{border-color:var(--ac);background:var(--acl)}
+.sc-ic{font-size:24px;margin-bottom:4px}
+.sc-n{font-size:12px;font-weight:600}
+.sdet{background:var(--sur);border:1px solid var(--bor);border-radius:11px;padding:14px;margin-top:4px;box-shadow:var(--sh)}
+.sdet-h{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:9px;border-bottom:1px solid var(--bor)}
+.ssec-t{font-size:9px;font-weight:700;color:var(--mu);letter-spacing:.8px;margin-bottom:6px;margin-top:10px;text-transform:uppercase}
+
+/* APPLY */
+.co-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:11px}
+.co-card{background:var(--sur);border:1.5px solid var(--bor);border-radius:10px;padding:11px;cursor:pointer;display:flex;align-items:center;gap:9px}
+.co-card:hover{border-color:var(--ac)}
+.co-card.on{border-color:var(--ac);background:var(--acl)}
+.co-logo{font-size:20px;flex-shrink:0;width:32px;text-align:center}
+.co-name{font-size:12px;font-weight:700}
+.co-field{font-size:10px;color:var(--mu)}
+.email-box{background:var(--sur2);border:1.5px solid var(--bor);border-radius:10px;padding:14px;margin-top:12px}
+.email-to{font-size:10px;color:var(--mu);margin-bottom:3px}
+.email-addr{font-size:13px;font-weight:700;color:var(--ac);margin-bottom:10px;word-break:break-all}
+.email-body{background:var(--sur);border:1px solid var(--bor);border-radius:8px;padding:12px;font-size:11px;line-height:1.8;color:var(--tx2);max-height:260px;overflow-y:auto;white-space:pre-wrap;margin-bottom:10px}
+
+/* TRAINING */
+.train-item{background:var(--sur);border:1px solid var(--bor);border-radius:10px;padding:12px;display:flex;align-items:flex-start;gap:10px;margin-bottom:7px}
+.train-item:hover{border-color:var(--ac)}
+.train-logo{font-size:22px;flex-shrink:0;width:32px;text-align:center}
+.train-info{flex:1}
+.train-name{font-size:12px;font-weight:700;margin-bottom:3px}
+.train-desc{font-size:11px;color:var(--mu);margin-bottom:6px;line-height:1.5}
+.train-tags{display:flex;flex-wrap:wrap;gap:4px}
+
+/* COMPARE */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.ccard{background:var(--sur2);border:1.5px solid var(--bor);border-radius:11px;padding:13px}
+.ccard h4{font-size:11px;font-weight:700;color:var(--ac);margin-bottom:9px;text-align:center}
+.cres{background:var(--sur);border:1px solid var(--bor);border-radius:11px;padding:15px;margin-top:11px}
+.crow{display:flex;align-items:center;padding:8px 0;border-bottom:1px solid var(--bor);gap:6px}
+.crow:last-child{border-bottom:none}
+.clabel{font-size:10px;color:var(--mu);font-weight:600;flex:1;text-align:center}
+.cval{flex:1;text-align:center;font-size:11px;font-weight:700}
+.cval.win{color:var(--gr)}
+.cval.lose{color:var(--mu)}
+.cwinner{background:var(--grl);border:2px solid var(--gr);border-radius:10px;padding:14px;text-align:center;margin-top:10px}
+.cwinner-t{font-size:15px;font-weight:900;color:var(--gr);font-family:'Tajawal',sans-serif}
+
+/* LOADING */
+.loading{text-align:center;padding:24px;color:var(--mu);font-size:12px}
+.sp{width:24px;height:24px;border:2.5px solid var(--bor);border-top-color:var(--ac);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* INDICATOR */
+.sec-ind{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--tx);color:var(--sur);font-size:10px;font-weight:600;padding:5px 14px;border-radius:100px;z-index:500;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;font-family:'IBM Plex Sans Arabic',sans-serif}
+.sec-ind.show{opacity:1}
+
+footer{text-align:center;margin-top:32px;color:var(--mu);font-size:10px;border-top:1px solid var(--bor);padding-top:14px}
+footer strong{color:var(--ac);font-weight:700}
+
+@media(max-width:600px){
+  .layout{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:sticky;top:var(--nav);z-index:90;display:flex;overflow-x:auto;padding:5px 6px;border-left:none;border-bottom:1px solid var(--bor);gap:2px;scrollbar-width:none}
+  .sidebar::-webkit-scrollbar{display:none}
+  .si{min-width:58px;flex-direction:column;gap:2px;padding:6px 4px;border-radius:8px;font-size:9px;text-align:center;justify-content:center;white-space:nowrap;flex-shrink:0;margin-bottom:0}
+  .si-ic{font-size:16px;width:auto}
+  .content{padding:14px 13px 70px}
+  .plats{grid-template-columns:1fr 1fr}
+  .r2{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .sgrid{grid-template-columns:1fr}
+  .compare-grid{grid-template-columns:1fr}
+  :root{--nav:52px}
+}
+</style>
+</head>
+<body>
+
+<!-- LANDING -->
+<div id="landing">
+  <div class="land-logo">م</div>
+  <div class="land-title">مجموعة وظايف</div>
+  <div class="land-sub">منصتك الشاملة للبحث عن وظيفة<br>وتطوير مسيرتك المهنية في السعودية</div>
+  <div class="land-feats">
+    <div class="lf"><div class="lf-ic">🔍</div><div class="lf-t">بحث ذكي</div><div class="lf-d">4 منصات بضغطة</div></div>
+    <div class="lf"><div class="lf-ic">📄</div><div class="lf-t">سيرة ذاتية</div><div class="lf-d">بالذكاء الاصطناعي</div></div>
+    <div class="lf"><div class="lf-ic">🎤</div><div class="lf-t">محاكي المقابلة</div><div class="lf-d">تدرب قبل المقابلة</div></div>
+    <div class="lf"><div class="lf-ic">📨</div><div class="lf-t">تقديم مباشر</div><div class="lf-d">16 شركة سعودية</div></div>
+  </div>
+  <button class="land-btn" id="startBtn">🚀 ابدأ الآن</button>
+</div>
+
+<!-- PROFILE SETUP -->
+<div id="profileSetup">
+  <div class="pbox">
+    <h2>👋 أهلاً! عرّفنا على نفسك</h2>
+    <p>أدخل بياناتك مرة وحدة وسنحفظها تلقائياً في كل النماذج</p>
+    <div class="iw"><span class="ii">👤</span><input id="su-name" placeholder="الاسم الكامل *"></div>
+    <div class="iw"><span class="ii">📱</span><input id="su-phone" placeholder="رقم الجوال"></div>
+    <div class="iw"><span class="ii">📧</span><input id="su-email" placeholder="البريد الإلكتروني"></div>
+    <div class="iw"><span class="ii">🎓</span><input id="su-major" placeholder="التخصص الجامعي"></div>
+    <div class="iw"><span class="ii">💼</span><input id="su-job" placeholder="المسمى الوظيفي المستهدف"></div>
+    <div class="iw"><span class="ii">🛠️</span><textarea id="su-skills" rows="2" placeholder="أبرز مهاراتك..."></textarea></div>
+    <button class="btn" id="saveProfileBtn">✅ حفظ والدخول للموقع</button>
+  </div>
+</div>
+
+<div class="sec-ind" id="secInd"></div>
+
+<nav>
+  <div class="brand">
+    <div class="nlogo">م</div>
+    <div><div class="ntitle">مجموعة وظايف</div><div class="nsub">عبدالله يوسف الجفن</div></div>
+  </div>
+  <div class="nacts">
+    <button class="nbtn" id="shareBtn">🔗</button>
+    <button class="nbtn" id="themeBtn"><span id="thIc">🌙</span><div class="trk"><div class="trt"></div></div></button>
+  </div>
+</nav>
+
+<div class="layout">
+<aside class="sidebar">
+  <button class="si on" data-sec="search"><span class="si-ic">🔍</span><span>البحث</span></button>
+  <button class="si" data-sec="cv"><span class="si-ic">📄</span><span>السيرة</span></button>
+  <button class="si" data-sec="interview"><span class="si-ic">🎤</span><span>المقابلة</span></button>
+  <button class="si" data-sec="salary"><span class="si-ic">💰</span><span>الراتب</span></button>
+  <button class="si" data-sec="tracker"><span class="si-ic">📊</span><span>التقديمات</span></button>
+  <button class="si" data-sec="analyzer"><span class="si-ic">🔎</span><span>محلل الإعلان</span></button>
+  <button class="si" data-sec="specs"><span class="si-ic">🎓</span><span>التخصصات</span></button>
+  <button class="si" data-sec="apply"><span class="si-ic">📨</span><span>تقديم مباشر</span></button>
+  <button class="si" data-sec="training"><span class="si-ic">🎯</span><span>التدريب</span></button>
+  <button class="si" data-sec="compare"><span class="si-ic">⚖️</span><span>مقارنة</span></button>
+</aside>
+<div class="content">
+
+<!-- SEARCH -->
+<div class="sec on" id="sec-search">
+  <div class="hero"><div class="hbadge">✦ البحث الوظيفي</div><h1><em>دوّر على </em><span>وظيفتك</span></h1><p>ابحث في جدارات · بيت.كوم · LinkedIn · قوى</p></div>
+  <div class="card">
+    <div class="ctitle">إعداد البحث</div>
+    <div class="lbl">التخصص</div>
+    <select id="majorSel"><option value="">-- اختر تخصصك --</option><option>كيمياء</option><option>فيزياء</option><option>رياضيات</option><option>أحياء</option><option>هندسة</option><option>حاسب آلي</option><option>محاسبة</option><option>إدارة أعمال</option><option>أخرى</option></select>
+    <div class="lbl">المسمى الوظيفي</div>
+    <div class="iw"><span class="ii">🔍</span><input type="text" id="jobInp" placeholder="مثال: مراقب جودة، محاسب..."></div>
+    <div class="lbl">بحث سريع</div>
+    <div class="tags">
+      <button class="tag" data-v="مراقب جودة">مراقب جودة</button>
+      <button class="tag" data-v="مهندس برمجيات">مهندس برمجيات</button>
+      <button class="tag" data-v="مهندس كهربائي">مهندس كهربائي</button>
+      <button class="tag" data-v="IT">IT</button>
+      <button class="tag" data-v="محاسب عام">محاسب عام</button>
+    </div>
+    <div class="hist" id="histWrap" style="display:none"><div class="hist-t">🕐 آخر عمليات البحث</div><div class="htags" id="histTags"></div></div>
+    <div class="lbl" style="margin-top:10px">المنصات</div>
+    <div class="plats">
+      <button class="pb j on" data-plat="j"><span class="pb-ck">✓</span><span class="pb-ic">🇸🇦</span><span>جدارات</span></button>
+      <button class="pb b on" data-plat="b"><span class="pb-ck">✓</span><span class="pb-ic">🌍</span><span>بيت.كوم</span></button>
+      <button class="pb l on" data-plat="l"><span class="pb-ck">✓</span><span class="pb-ic">💼</span><span>LinkedIn</span></button>
+      <button class="pb q on" data-plat="q"><span class="pb-ck">✓</span><span class="pb-ic">⚡</span><span>قوى</span></button>
+    </div>
+    <button class="btn" id="searchBtn">🚀 ابحث الآن</button>
+  </div>
+  <div id="searchRes"></div>
+</div>
+
+<!-- CV -->
+<div class="sec" id="sec-cv">
+  <div class="hero"><div class="hbadge">📄 السيرة الذاتية</div><h1>صمّم <span>سيرتك</span></h1><p>عربي · إنجليزي · كلاهما · بالذكاء الاصطناعي</p></div>
+  <div class="cvtabs">
+    <button class="cvtab on" data-cvm="normal">📝 عادية</button>
+    <button class="cvtab" data-cvm="ats">🤖 ATS</button>
+    <button class="cvtab" data-cvm="ai">✨ ذكاء اصطناعي</button>
+  </div>
+  <div class="cvm on" id="cvm-normal">
+    <div class="card">
+      <div class="langs" id="lang-normal"><button class="lb on" data-lang="ar">🇸🇦 عربي</button><button class="lb" data-lang="en">🇺🇸 English</button><button class="lb" data-lang="both">🌐 كلاهما</button></div>
+      <div class="r2"><div class="iw"><span class="ii">👤</span><input id="n-name" placeholder="الاسم"></div><div class="iw"><span class="ii">📱</span><input id="n-phone" placeholder="الجوال"></div></div>
+      <div class="iw"><span class="ii">📧</span><input id="n-email" placeholder="البريد"></div>
+      <div class="r2"><div class="iw"><span class="ii">🎓</span><input id="n-major" placeholder="التخصص"></div><div class="iw"><span class="ii">💼</span><input id="n-job" placeholder="المسمى المستهدف"></div></div>
+      <div class="iw"><span class="ii">🛠️</span><textarea id="n-skills" rows="2" placeholder="المهارات..."></textarea></div>
+      <div class="iw"><span class="ii">🏢</span><textarea id="n-exp" rows="2" placeholder="الخبرات..."></textarea></div>
+      <button class="btn" id="genNormal">📄 إنشاء السيرة</button>
+      <div id="res-normal"></div>
+    </div>
+  </div>
+  <div class="cvm" id="cvm-ats">
+    <div class="card">
+      <div class="ats-tip">💡 محسّنة لأنظمة الفرز الآلي ATS</div>
+      <div class="langs" id="lang-ats"><button class="lb on" data-lang="ar">🇸🇦 عربي</button><button class="lb" data-lang="en">🇺🇸 English</button><button class="lb" data-lang="both">🌐 كلاهما</button></div>
+      <div class="r2"><div class="iw"><span class="ii">👤</span><input id="a-name" placeholder="الاسم"></div><div class="iw"><span class="ii">📱</span><input id="a-phone" placeholder="الجوال"></div></div>
+      <div class="iw"><span class="ii">📧</span><input id="a-email" placeholder="البريد"></div>
+      <div class="r2"><div class="iw"><span class="ii">🎓</span><input id="a-major" placeholder="التخصص"></div><div class="iw"><span class="ii">💼</span><input id="a-job" placeholder="المسمى المستهدف"></div></div>
+      <div class="iw"><span class="ii">🛠️</span><textarea id="a-skills" rows="2" placeholder="المهارات..."></textarea></div>
+      <div class="iw"><span class="ii">🏢</span><textarea id="a-exp" rows="2" placeholder="الخبرات..."></textarea></div>
+      <button class="btn" id="genAts">🤖 إنشاء سيرة ATS</button>
+      <div id="res-ats"></div>
+    </div>
+  </div>
+  <div class="cvm" id="cvm-ai">
+    <div class="card">
+      <div class="langs" id="lang-ai"><button class="lb on" data-lang="ar">🇸🇦 عربي</button><button class="lb" data-lang="en">🇺🇸 English</button><button class="lb" data-lang="both">🌐 كلاهما</button></div>
+      <div class="r2"><div class="iw"><span class="ii">👤</span><input id="ai-name" placeholder="الاسم"></div><div class="iw"><span class="ii">📱</span><input id="ai-phone" placeholder="الجوال"></div></div>
+      <div class="iw"><span class="ii">📧</span><input id="ai-email" placeholder="البريد"></div>
+      <div class="r2"><div class="iw"><span class="ii">🎓</span><input id="ai-major" placeholder="التخصص"></div><div class="iw"><span class="ii">🏫</span><input id="ai-univ" placeholder="الجامعة وسنة التخرج"></div></div>
+      <div class="iw"><span class="ii">💼</span><input id="ai-job" placeholder="المسمى المستهدف"></div>
+      <div class="iw"><span class="ii">🛠️</span><textarea id="ai-skills" rows="2" placeholder="مهاراتك وشهاداتك..."></textarea></div>
+      <div class="iw"><span class="ii">🏢</span><textarea id="ai-exp" rows="2" placeholder="خبراتك ومشاريعك..."></textarea></div>
+      <div class="iw"><span class="ii">✨</span><textarea id="ai-extra" rows="2" placeholder="معلومات إضافية..."></textarea></div>
+      <button class="btn" id="genAi">✨ صمّم سيرتي بالذكاء الاصطناعي</button>
+      <div id="res-ai"></div>
+    </div>
+  </div>
+</div>
+
+<!-- INTERVIEW -->
+<div class="sec" id="sec-interview">
+  <div class="hero"><div class="hbadge">🎤 محاكي المقابلة</div><h1>تدرّب على <span>المقابلة</span></h1><p>الذكاء الاصطناعي يسألك ويقيّم إجاباتك</p></div>
+  <div class="card">
+    <div class="r2"><div class="iw"><span class="ii">💼</span><input id="int-job" value="مراقب جودة" placeholder="المسمى"></div><div class="iw"><span class="ii">🏭</span><input id="int-field" value="تصنيع" placeholder="المجال"></div></div>
+    <button class="btn" id="startInt">🎤 ابدأ المقابلة</button>
+  </div>
+  <div class="card" id="intCard" style="display:none">
+    <div class="chatbox" id="chatBox"></div>
+    <div class="chat-row"><input type="text" id="chatInp" placeholder="اكتب إجابتك..."><button class="csend" id="sendBtn">إرسال ←</button></div>
+    <div class="brow"><button class="btn sec sm" id="nextQBtn">↻ سؤال جديد</button><button class="btn sec sm" id="endIntBtn">إنهاء</button></div>
+  </div>
+</div>
+
+<!-- SALARY -->
+<div class="sec" id="sec-salary">
+  <div class="hero"><div class="hbadge">💰 حاسبة الراتب</div><h1>وش <span>راتبك المتوقع؟</span></h1><p>بناءً على بيانات السوق السعودي 2024</p></div>
+  <div class="card">
+    <div class="r2"><div class="iw"><span class="ii">💼</span><input id="sal-job" value="مراقب جودة" placeholder="المسمى"></div><div class="iw"><span class="ii">🎓</span><input id="sal-major" value="كيمياء" placeholder="التخصص"></div></div>
+    <div class="lbl">سنوات الخبرة</div>
+    <select id="sal-exp"><option value="0">حديث تخرج</option><option value="1">أقل من سنة</option><option value="2">1-3 سنوات</option><option value="5">3-5 سنوات</option><option value="7">أكثر من 5 سنوات</option></select>
+    <div class="lbl">المنطقة</div>
+    <select id="sal-region"><option value="1.1">الرياض</option><option value="1.05">جدة</option><option value="1.15">الدمام</option><option value="1.0">مكة</option><option value="0.9">أخرى</option></select>
+    <button class="btn" id="calcSalBtn">💰 احسب الراتب</button>
+    <div id="salRes"></div>
+  </div>
+</div>
+
+<!-- TRACKER -->
+<div class="sec" id="sec-tracker">
+  <div class="hero"><div class="hbadge">📊 تتبع التقديمات</div><h1>تابع <span>تقديماتك</span></h1><p>سجّل كل وظيفة تقدمت عليها</p></div>
+  <div class="card">
+    <div class="stats"><div class="stb t"><div class="stn" id="st-total">0</div><div class="stl">إجمالي</div></div><div class="stb p"><div class="stn" id="st-pend">0</div><div class="stl">معلّق</div></div><div class="stb i"><div class="stn" id="st-int">0</div><div class="stl">مقابلة</div></div><div class="stb a"><div class="stn" id="st-acc">0</div><div class="stl">مقبول</div></div></div>
+    <div class="sort-row"><span>ترتيب:</span><select id="sortApps" style="margin-bottom:0;padding:3px 7px;font-size:10px"><option value="date-desc">الأحدث</option><option value="date-asc">الأقدم</option><option value="status">الحالة</option></select></div>
+    <div class="lbl">إضافة تقديم</div>
+    <div class="r2"><div class="iw"><span class="ii">💼</span><input id="app-job" placeholder="المسمى الوظيفي"></div><div class="iw"><span class="ii">🏢</span><input id="app-co" placeholder="اسم الشركة"></div></div>
+    <div class="r2"><div class="iw"><span class="ii">📅</span><input id="app-date" type="date"></div><select id="app-status" style="margin-bottom:0"><option value="pending">⏳ معلّق</option><option value="interview">📅 مقابلة</option><option value="accepted">✅ مقبول</option><option value="rejected">❌ مرفوض</option></select></div>
+    <button class="btn" id="addAppBtn" style="margin-top:8px">➕ إضافة</button>
+    <div class="apps" id="appsList"></div>
+  </div>
+</div>
+
+<!-- ANALYZER -->
+<div class="sec" id="sec-analyzer">
+  <div class="hero"><div class="hbadge">🔎 محلل الإعلان</div><h1>حلّل <span>إعلان الوظيفة</span></h1><p>انسخ الإعلان — يستخرج المتطلبات تلقائياً</p></div>
+  <div class="card">
+    <div class="iw"><span class="ii">📋</span><textarea id="anaInp" rows="7" placeholder="انسخ نص إعلان الوظيفة هنا..."></textarea></div>
+    <button class="btn" id="anaBtn">🔎 حلّل الإعلان</button>
+    <div id="anaRes"></div>
+  </div>
+</div>
+
+<!-- SPECS -->
+<div class="sec" id="sec-specs">
+  <div class="hero"><div class="hbadge">🎓 التخصصات</div><h1>اكتشف <span>مجالك</span></h1><p>الدورات والمجالات لكل تخصص</p></div>
+  <div class="card">
+    <div class="iw" style="margin-bottom:11px"><span class="ii">🔍</span><input type="text" id="specSrch" placeholder="ابحث عن تخصص..."></div>
+    <div class="sgrid" id="specGrid">
+      <div class="sc" data-spec="chem"><div class="sc-ic">⚗️</div><div class="sc-n">كيمياء</div></div>
+      <div class="sc" data-spec="chem_ind"><div class="sc-ic">🏭</div><div class="sc-n">كيمياء صناعية</div></div>
+      <div class="sc" data-spec="chem_env"><div class="sc-ic">🌿</div><div class="sc-n">كيمياء بيئية</div></div>
+      <div class="sc" data-spec="physics"><div class="sc-ic">⚛️</div><div class="sc-n">فيزياء</div></div>
+      <div class="sc" data-spec="math"><div class="sc-ic">📐</div><div class="sc-n">رياضيات</div></div>
+      <div class="sc" data-spec="bio"><div class="sc-ic">🧬</div><div class="sc-n">أحياء</div></div>
+      <div class="sc" data-spec="cs"><div class="sc-ic">💻</div><div class="sc-n">حاسب آلي</div></div>
+      <div class="sc" data-spec="law"><div class="sc-ic">⚖️</div><div class="sc-n">محاماة</div></div>
+      <div class="sc" data-spec="accounting"><div class="sc-ic">📊</div><div class="sc-n">محاسبة</div></div>
+      <div class="sc" data-spec="finance"><div class="sc-ic">💰</div><div class="sc-n">تمويل واستثمار</div></div>
+      <div class="sc" data-spec="ai"><div class="sc-ic">🤖</div><div class="sc-n">ذكاء اصطناعي</div></div>
+      <div class="sc" data-spec="programming"><div class="sc-ic">👨‍💻</div><div class="sc-n">برمجة</div></div>
+      <div class="sc" data-spec="cyber"><div class="sc-ic">🔐</div><div class="sc-n">أمن سيبراني</div></div>
+      <div class="sc" data-spec="supply"><div class="sc-ic">🚚</div><div class="sc-n">سلاسل الإمداد</div></div>
+      <div class="sc" data-spec="software_eng"><div class="sc-ic">⚙️</div><div class="sc-n">هندسة برمجيات</div></div>
+      <div class="sc" data-spec="app_dev"><div class="sc-ic">📱</div><div class="sc-n">تطوير تطبيقات</div></div>
+      <div class="sc" data-spec="medicine"><div class="sc-ic">🩺</div><div class="sc-n">طب بشري</div></div>
+      <div class="sc" data-spec="hr"><div class="sc-ic">👥</div><div class="sc-n">موارد بشرية</div></div>
+      <div class="sc" data-spec="nursing"><div class="sc-ic">💊</div><div class="sc-n">تمريض وصحة</div></div>
+      <div class="sc" data-spec="energy"><div class="sc-ic">☀️</div><div class="sc-n">طاقة متجددة</div></div>
+      <div class="sc" data-spec="tourism"><div class="sc-ic">🏨</div><div class="sc-n">سياحة وفندقة</div></div>
+      <div class="sc" data-spec="marketing"><div class="sc-ic">📣</div><div class="sc-n">تسويق رقمي</div></div>
+    </div>
+    <div id="specDet"></div>
+  </div>
+</div>
+
+<!-- APPLY -->
+<div class="sec" id="sec-apply">
+  <div class="hero"><div class="hbadge">📨 التقديم المباشر</div><h1>قدّم على <span>الشركات</span></h1><p>أدخل بياناتك واختر الشركة — رسالة احترافية جاهزة</p></div>
+  <div class="card">
+    <div class="ctitle">بياناتك</div>
+    <div class="r2"><div class="iw"><span class="ii">👤</span><input id="ap-name" placeholder="الاسم الكامل"></div><div class="iw"><span class="ii">📱</span><input id="ap-phone" placeholder="الجوال"></div></div>
+    <div class="iw"><span class="ii">📧</span><input id="ap-email" placeholder="البريد الإلكتروني"></div>
+    <div class="r2"><div class="iw"><span class="ii">🎓</span><input id="ap-major" placeholder="التخصص"></div><div class="iw"><span class="ii">💼</span><input id="ap-job" placeholder="المسمى المستهدف"></div></div>
+    <div class="iw"><span class="ii">🛠️</span><textarea id="ap-skills" rows="2" placeholder="أبرز مهاراتك..."></textarea></div>
+    <div class="iw"><span class="ii">🏢</span><textarea id="ap-exp" rows="2" placeholder="خبراتك..."></textarea></div>
+  </div>
+  <div class="card">
+    <div class="ctitle">اختر الشركة</div>
+    <div class="iw" style="margin-bottom:10px"><span class="ii">🔍</span><input type="text" id="coSearch" placeholder="ابحث عن شركة..."></div>
+    <div class="co-grid" id="coGrid">
+      <div class="co-card" data-co="aramco"><div class="co-logo">🛢️</div><div><div class="co-name">أرامكو</div><div class="co-field">نفط وطاقة</div></div></div>
+      <div class="co-card" data-co="sabic"><div class="co-logo">⚗️</div><div><div class="co-name">سابك</div><div class="co-field">بتروكيماويات</div></div></div>
+      <div class="co-card" data-co="stc"><div class="co-logo">📡</div><div><div class="co-name">STC</div><div class="co-field">اتصالات</div></div></div>
+      <div class="co-card" data-co="maaden"><div class="co-logo">⛏️</div><div><div class="co-name">معادن</div><div class="co-field">تعدين</div></div></div>
+      <div class="co-card" data-co="saudiairlines"><div class="co-logo">✈️</div><div><div class="co-name">الخطوط السعودية</div><div class="co-field">طيران</div></div></div>
+      <div class="co-card" data-co="sec"><div class="co-logo">⚡</div><div><div class="co-name">الكهرباء</div><div class="co-field">طاقة</div></div></div>
+      <div class="co-card" data-co="mobily"><div class="co-logo">📶</div><div><div class="co-name">موبايلي</div><div class="co-field">اتصالات</div></div></div>
+      <div class="co-card" data-co="alrajhi"><div class="co-logo">🏦</div><div><div class="co-name">الراجحي</div><div class="co-field">بنوك</div></div></div>
+      <div class="co-card" data-co="ncb"><div class="co-logo">🏛️</div><div><div class="co-name">الأهلي</div><div class="co-field">بنوك</div></div></div>
+      <div class="co-card" data-co="pif"><div class="co-logo">💎</div><div><div class="co-name">صندوق الاستثمارات</div><div class="co-field">استثمار</div></div></div>
+      <div class="co-card" data-co="neom"><div class="co-logo">🌆</div><div><div class="co-name">نيوم</div><div class="co-field">تطوير</div></div></div>
+      <div class="co-card" data-co="sdaia"><div class="co-logo">🤖</div><div><div class="co-name">سدايا</div><div class="co-field">ذكاء اصطناعي</div></div></div>
+      <div class="co-card" data-co="moh"><div class="co-logo">🏥</div><div><div class="co-name">وزارة الصحة</div><div class="co-field">صحة</div></div></div>
+      <div class="co-card" data-co="zatca"><div class="co-logo">📊</div><div><div class="co-name">الزكاة والضريبة</div><div class="co-field">مالية</div></div></div>
+      <div class="co-card" data-co="tasnee"><div class="co-logo">🏭</div><div><div class="co-name">تصنيع</div><div class="co-field">صناعة</div></div></div>
+      <div class="co-card" data-co="total"><div class="co-logo">🔵</div><div><div class="co-name">TotalEnergies</div><div class="co-field">طاقة</div></div></div>
+    </div>
+    <button class="btn" id="genEmailBtn">✨ اكتب رسالة التقديم</button>
+    <div id="emailResult"></div>
+  </div>
+</div>
+
+<!-- TRAINING -->
+<div class="sec" id="sec-training">
+  <div class="hero"><div class="hbadge">🎯 برامج التدريب</div><h1>اكتشف <span>برامج التدريب</span></h1><p>جميع البرامج التدريبية المتاحة في المملكة</p></div>
+  <div class="card">
+    <div class="iw" style="margin-bottom:12px"><span class="ii">🔍</span><input type="text" id="trainSearch" placeholder="ابحث عن برنامج..."></div>
+    <div class="ctitle">🏛️ البرامج الحكومية</div>
+    <div id="trainList">
+      <div class="train-item"><div class="train-logo">🇸🇦</div><div class="train-info"><div class="train-name">برنامج تطوير الكوادر — هيئة الموارد البشرية</div><div class="train-desc">تدريب وتأهيل الكوادر السعودية في مختلف القطاعات</div><div class="train-tags"><span class="chip g">مجاني</span><span class="chip b">حكومي</span></div></div></div>
+      <div class="train-item"><div class="train-logo">💼</div><div class="train-info"><div class="train-name">برنامج تطوير القدرات — هدف</div><div class="train-desc">دعم التدريب وتأهيل السعوديين للقطاع الخاص</div><div class="train-tags"><span class="chip g">مدعوم</span><span class="chip b">حكومي</span></div></div></div>
+      <div class="train-item"><div class="train-logo">📚</div><div class="train-info"><div class="train-name">منصة مهارات — وزارة الموارد البشرية</div><div class="train-desc">دورات مهنية مجانية عبر الإنترنت</div><div class="train-tags"><span class="chip g">مجاني</span><span class="chip b">أونلاين</span></div></div></div>
+      <div class="train-item"><div class="train-logo">🤖</div><div class="train-info"><div class="train-name">برامج سدايا للذكاء الاصطناعي</div><div class="train-desc">تدريب في الذكاء الاصطناعي وعلوم البيانات</div><div class="train-tags"><span class="chip g">مجاني</span><span class="chip b">تقنية</span></div></div></div>
+      <div class="train-item"><div class="train-logo">🛡️</div><div class="train-info"><div class="train-name">المعهد المالي — ساما</div><div class="train-desc">تدريب في المجال المالي والمصرفي</div><div class="train-tags"><span class="chip g">مدعوم</span><span class="chip b">مالية</span></div></div></div>
+      <div class="ctitle" style="margin-top:16px">🏢 برامج الشركات الكبرى</div>
+      <div class="train-item"><div class="train-logo">🛢️</div><div class="train-info"><div class="train-name">برنامج التطوير المهني — أرامكو</div><div class="train-desc">تدريب تقني وقيادي في النفط والطاقة والهندسة</div><div class="train-tags"><span class="chip o">مدفوع</span><span class="chip b">هندسة</span></div></div></div>
+      <div class="train-item"><div class="train-logo">⚗️</div><div class="train-info"><div class="train-name">أكاديمية سابك للتدريب</div><div class="train-desc">تدريب في البتروكيماويات والكيمياء الصناعية</div><div class="train-tags"><span class="chip o">مدفوع</span><span class="chip b">صناعة</span></div></div></div>
+      <div class="train-item"><div class="train-logo">📡</div><div class="train-info"><div class="train-name">أكاديمية STC التقنية</div><div class="train-desc">تدريب في الاتصالات وتقنية المعلومات والأمن السيبراني</div><div class="train-tags"><span class="chip o">مدفوع</span><span class="chip b">تقنية</span></div></div></div>
+      <div class="ctitle" style="margin-top:16px">🎓 معاهد ومنصات</div>
+      <div class="train-item"><div class="train-logo">💻</div><div class="train-info"><div class="train-name">منصة Coursera</div><div class="train-desc">آلاف الدورات من أفضل الجامعات العالمية</div><div class="train-tags"><span class="chip g">مجاني/مدفوع</span><span class="chip b">أونلاين</span></div></div></div>
+      <div class="train-item"><div class="train-logo">📖</div><div class="train-info"><div class="train-name">منصة إدراك</div><div class="train-desc">دورات مجانية باللغة العربية</div><div class="train-tags"><span class="chip g">مجاني</span><span class="chip b">عربي</span></div></div></div>
+      <div class="train-item"><div class="train-logo">☁️</div><div class="train-info"><div class="train-name">AWS Training</div><div class="train-desc">تدريب رسمي في الحوسبة السحابية</div><div class="train-tags"><span class="chip o">مدفوع</span><span class="chip b">سحابة</span></div></div></div>
+      <div class="train-item"><div class="train-logo">🏅</div><div class="train-info"><div class="train-name">معهد PMI — شهادة PMP</div><div class="train-desc">شهادة إدارة المشاريع المعتمدة دولياً</div><div class="train-tags"><span class="chip o">مدفوع</span><span class="chip b">إدارة</span></div></div></div>
+      <div class="train-item"><div class="train-logo">📊</div><div class="train-info"><div class="train-name">CFA Institute</div><div class="train-desc">شهادة المحلل المالي المعتمد</div><div class="train-tags"><span class="chip o">مدفوع</span><span class="chip b">مالية</span></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE -->
+<div class="sec" id="sec-compare">
+  <div class="hero"><div class="hbadge">⚖️ مقارنة العروض</div><h1>قارن بين <span>عرضين</span></h1><p>أدخل تفاصيل عرضين وسيحلل لك الأفضل</p></div>
+  <div class="card">
+    <div class="compare-grid">
+      <div class="ccard"><h4>العرض الأول</h4>
+        <div class="iw"><span class="ii">🏢</span><input id="c1-co" placeholder="اسم الشركة"></div>
+        <div class="iw"><span class="ii">💰</span><input id="c1-sal" type="number" placeholder="الراتب (ريال)"></div>
+        <div class="iw"><span class="ii">📍</span><input id="c1-loc" placeholder="الموقع"></div>
+        <div class="iw"><span class="ii">⏰</span><input id="c1-hours" placeholder="ساعات العمل"></div>
+        <div class="iw"><span class="ii">🏥</span><input id="c1-med" placeholder="تأمين طبي؟"></div>
+        <div class="iw"><span class="ii">📈</span><input id="c1-growth" placeholder="فرص الترقي 1-5"></div>
+      </div>
+      <div class="ccard"><h4>العرض الثاني</h4>
+        <div class="iw"><span class="ii">🏢</span><input id="c2-co" placeholder="اسم الشركة"></div>
+        <div class="iw"><span class="ii">💰</span><input id="c2-sal" type="number" placeholder="الراتب (ريال)"></div>
+        <div class="iw"><span class="ii">📍</span><input id="c2-loc" placeholder="الموقع"></div>
+        <div class="iw"><span class="ii">⏰</span><input id="c2-hours" placeholder="ساعات العمل"></div>
+        <div class="iw"><span class="ii">🏥</span><input id="c2-med" placeholder="تأمين طبي؟"></div>
+        <div class="iw"><span class="ii">📈</span><input id="c2-growth" placeholder="فرص الترقي 1-5"></div>
+      </div>
+    </div>
+    <button class="btn" id="compareBtn">⚖️ قارن الآن</button>
+    <div id="compareRes"></div>
+  </div>
+</div>
+
+<footer>صُمِّم بـ ❤️ بواسطة <strong>عبدالله يوسف الجفن</strong> · مجموعة وظايف · 2026</footer>
+</div></div>
+
+<script>
+var OKEY = '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';
+var userProfile = null;
+
+function callAI(prompt, maxTok, cb) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://api.openai.com/v1/chat/completions');
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.setRequestHeader('Authorization', 'Bearer ' + OKEY);
+  xhr.onload = function() {
+    try {
+      var d = JSON.parse(xhr.responseText);
+      if (d.error) { cb(d.error.message, null); return; }
+      cb(null, d.choices[0].message.content);
+    } catch(e) { cb('Parse error', null); }
+  };
+  xhr.onerror = function() { cb('Network error', null); };
+  xhr.send(JSON.stringify({model:'gpt-4o-mini', max_tokens: maxTok || 800, messages:[{role:'user', content: prompt}]}));
+}
+
+function fillForms(p) {
+  if (!p) return;
+  var map = {
+    'n-name':p.name,'n-phone':p.phone,'n-email':p.email,'n-major':p.major,'n-job':p.job,'n-skills':p.skills,
+    'a-name':p.name,'a-phone':p.phone,'a-email':p.email,'a-major':p.major,'a-job':p.job,'a-skills':p.skills,
+    'ai-name':p.name,'ai-phone':p.phone,'ai-email':p.email,'ai-major':p.major,'ai-job':p.job,'ai-skills':p.skills,
+    'ap-name':p.name,'ap-phone':p.phone,'ap-email':p.email,'ap-major':p.major,'ap-job':p.job,'ap-skills':p.skills,
+    'sal-job':p.job,'sal-major':p.major,'int-job':p.job
+  };
+  Object.keys(map).forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el && map[id]) el.value = map[id];
+  });
+}
+
+function showApp() {
+  document.getElementById('landing').style.display = 'none';
+  document.getElementById('profileSetup').style.display = 'none';
+  if (userProfile) fillForms(userProfile);
+}
+
+document.getElementById('startBtn').onclick = function() {
+  document.getElementById('landing').style.display = 'none';
+  document.getElementById('profileSetup').style.display = 'flex';
+};
+
+document.getElementById('saveProfileBtn').onclick = function() {
+  var name = document.getElementById('su-name').value.trim();
+  if (!name) { alert('أدخل اسمك أولاً'); return; }
+  userProfile = {
+    name: name,
+    phone: document.getElementById('su-phone').value.trim(),
+    email: document.getElementById('su-email').value.trim(),
+    major: document.getElementById('su-major').value.trim(),
+    job: document.getElementById('su-job').value.trim(),
+    skills: document.getElementById('su-skills').value.trim()
+  };
+  showApp();
+};
+
+document.getElementById('themeBtn').onclick = function() {
+  var d = document.body.classList.toggle('dark');
+  document.getElementById('thIc').textContent = d ? '☀️' : '🌙';
+};
+
+document.getElementById('shareBtn').onclick = function() {
+  var url = window.location.href;
+  if (navigator.share) { navigator.share({title:'مجموعة وظايف', url:url}); }
+  else if (navigator.clipboard) { navigator.clipboard.writeText(url).then(function(){alert('تم نسخ الرابط');}); }
+};
+
+var secNames = {search:'🔍 البحث',cv:'📄 السيرة',interview:'🎤 المقابلة',salary:'💰 الراتب',tracker:'📊 التقديمات',analyzer:'🔎 محلل الإعلان',specs:'🎓 التخصصات',apply:'📨 التقديم المباشر',training:'🎯 التدريب',compare:'⚖️ مقارنة'};
+var indT = null;
+function showInd(name) {
+  var el = document.getElementById('secInd');
+  el.textContent = name; el.classList.add('show');
+  clearTimeout(indT);
+  indT = setTimeout(function(){ el.classList.remove('show'); }, 2000);
+}
+
+document.querySelectorAll('.si').forEach(function(btn) {
+  btn.onclick = function() {
+    document.querySelectorAll('.si').forEach(function(b){ b.classList.remove('on'); });
+    document.querySelectorAll('.sec').forEach(function(s){ s.classList.remove('on'); });
+    btn.classList.add('on');
+    document.getElementById('sec-' + btn.dataset.sec).classList.add('on');
+    showInd(secNames[btn.dataset.sec] || '');
+    btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+  };
+});
+
+var platSel = {j:true, b:true, l:true, q:true};
+var srchHist = [];
+
+document.querySelectorAll('.pb').forEach(function(btn) {
+  btn.onclick = function() { platSel[btn.dataset.plat] = !platSel[btn.dataset.plat]; btn.classList.toggle('on', platSel[btn.dataset.plat]); };
+});
+
+document.querySelectorAll('.tag').forEach(function(tag) {
+  tag.onclick = function() {
+    document.querySelectorAll('.tag').forEach(function(t){ t.classList.remove('on'); });
+    tag.classList.add('on'); document.getElementById('jobInp').value = tag.dataset.v;
+  };
+});
+
+document.getElementById('majorSel').onchange = function() { if (this.value) document.getElementById('jobInp').value = this.value; };
+document.getElementById('jobInp').onkeydown = function(e) { if (e.key === 'Enter') doSearch(); };
+document.getElementById('searchBtn').onclick = doSearch;
+
+function saveHist(q) {
+  srchHist = srchHist.filter(function(h){ return h !== q; });
+  srchHist.unshift(q);
+  if (srchHist.length > 8) srchHist = srchHist.slice(0, 8);
+  var w = document.getElementById('histWrap');
+  var t = document.getElementById('histTags');
+  if (!srchHist.length) { w.style.display = 'none'; return; }
+  w.style.display = 'block';
+  t.innerHTML = srchHist.map(function(h){ return '<span class="ht">' + h + '</span>'; }).join('');
+  t.querySelectorAll('.ht').forEach(function(el){ el.onclick = function(){ document.getElementById('jobInp').value = el.textContent; }; });
+}
+
+function doSearch() {
+  var q = document.getElementById('jobInp').value.trim();
+  var wrap = document.getElementById('searchRes');
+  if (!q) { document.getElementById('jobInp').style.borderColor = '#DC2626'; setTimeout(function(){ document.getElementById('jobInp').style.borderColor = ''; }, 1500); return; }
+  if (!platSel.j && !platSel.b && !platSel.l && !platSel.q) { wrap.innerHTML = '<div style="text-align:center;color:var(--mu);padding:14px;font-size:12px">اختر منصة</div>'; return; }
+  saveHist(q);
+  var enc = encodeURIComponent(q);
+  var links = {j:{url:'https://jadarat.sa/ar/jobs?search='+enc,name:'جدارات',desc:'jadarat.sa',cls:'j',ic:'🇸🇦'},b:{url:'https://www.bayt.com/ar/saudi-arabia/jobs/?q='+enc,name:'بيت.كوم',desc:'bayt.com',cls:'b',ic:'🌍'},l:{url:'https://www.linkedin.com/jobs/search/?keywords='+enc+'&location=Saudi%20Arabia',name:'LinkedIn',desc:'linkedin.com',cls:'l',ic:'💼'},q:{url:'https://www.qiwa.sa/ar/jobs?q='+enc,name:'قوى',desc:'qiwa.sa',cls:'q',ic:'⚡'}};
+  var html = '<div class="rlist">';
+  ['j','b','l','q'].forEach(function(k){
+    if (!platSel[k]) return;
+    var p = links[k];
+    html += '<div class="ri '+p.cls+'"><a class="rl" href="'+p.url+'" target="_blank" rel="noopener"><div class="ric '+p.cls+'">'+p.ic+'</div><div class="rt"><div class="rn">'+p.name+' — "'+q+'"</div><div class="rd">'+p.desc+'</div></div><span class="ra">←</span></a></div>';
+  });
+  html += '</div>';
+  wrap.innerHTML = html;
+  wrap.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+document.querySelectorAll('.cvtab').forEach(function(tab) {
+  tab.onclick = function() {
+    document.querySelectorAll('.cvtab').forEach(function(t){ t.classList.remove('on'); });
+    document.querySelectorAll('.cvm').forEach(function(m){ m.classList.remove('on'); });
+    tab.classList.add('on'); document.getElementById('cvm-' + tab.dataset.cvm).classList.add('on');
+  };
+});
+
+var cvLangs = {normal:'ar', ats:'ar', ai:'ar'};
+['normal','ats','ai'].forEach(function(mode) {
+  var wrap = document.getElementById('lang-' + mode);
+  if (!wrap) return;
+  wrap.querySelectorAll('.lb').forEach(function(btn) {
+    btn.onclick = function() { wrap.querySelectorAll('.lb').forEach(function(b){ b.classList.remove('on'); }); btn.classList.add('on'); cvLangs[mode] = btn.dataset.lang; };
+  });
+});
+
+function buildCV(data, lang, type) {
+  var isEn = lang === 'en'; var isBoth = lang === 'both';
+  function box(isE) {
+    var kw = type === 'ats' ? '<div class="cvs"><div class="cvst">'+(isE?'KEYWORDS':'الكلمات المفتاحية')+'</div><div class="cvi">'+data.job+' | '+data.major+'</div></div>' : '';
+    if (isE) return '<div class="cvbox en"><h2>'+data.name+'</h2><div class="cvc"><span>📱 '+data.phone+'</span><span>📧 '+data.email+'</span></div><div class="cvs"><div class="cvst">OBJECTIVE</div><div class="cvi">Seeking a '+data.job+' position.</div></div><div class="cvs"><div class="cvst">EDUCATION</div><div class="cvi">'+data.major+'</div></div><div class="cvs"><div class="cvst">EXPERIENCE</div><div class="cvi">'+(data.exp||'—')+'</div></div><div class="cvs"><div class="cvst">SKILLS</div><div class="cvi">'+(data.skills||'—')+'</div></div>'+kw+'</div>';
+    return '<div class="cvbox"><h2>'+data.name+'</h2><div class="cvc"><span>📱 '+data.phone+'</span><span>📧 '+data.email+'</span></div><div class="cvs"><div class="cvst">الهدف الوظيفي</div><div class="cvi">الحصول على وظيفة <strong>'+data.job+'</strong>.</div></div><div class="cvs"><div class="cvst">التعليم</div><div class="cvi">'+data.major+'</div></div><div class="cvs"><div class="cvst">الخبرات</div><div class="cvi">'+(data.exp||'—')+'</div></div><div class="cvs"><div class="cvst">المهارات</div><div class="cvi">'+(data.skills||'—')+'</div></div>'+kw+'</div>';
+  }
+  if (isBoth) return box(false)+'<hr style="margin:12px 0;border:none;border-top:2px dashed var(--bor)">'+box(true);
+  return box(isEn);
+}
+
+function showCvRes(id, html) {
+  var c = document.getElementById(id);
+  c.innerHTML = html + '<div class="brow"><button class="btn sec sm cv-cp">📋 نسخ</button><button class="btn sm cv-dl">⬇️ تحميل</button></div>';
+  c.querySelector('.cv-cp').onclick = function() {
+    var box = c.querySelector('.cvbox, .cvbox-wrap');
+    if (box && navigator.clipboard) navigator.clipboard.writeText(box.innerText).then(function(){ alert('تم النسخ'); });
+  };
+  c.querySelector('.cv-dl').onclick = function() {
+    var box = c.querySelector('.cvbox, .cvbox-wrap');
+    if (!box) { alert('أنشئ السيرة أولاً'); return; }
+    var isEn = box.classList.contains('en');
+    var h = '<!DOCTYPE html><html dir="'+(isEn?'ltr':'rtl')+'"><head><meta charset="UTF-8"><style>body{font-family:sans-serif;padding:36px;color:#1a1f36;line-height:1.9;direction:'+(isEn?'ltr':'rtl')+'}h2{font-size:18px;font-weight:700;color:#2754EB;margin-bottom:4px}.cvc{font-size:11px;color:#8A96B8;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #e4e8f5}.cvs{margin-bottom:12px}.cvst{font-size:9px;font-weight:700;letter-spacing:1px;color:#2754EB;margin-bottom:6px}.cvi{font-size:12px;white-space:pre-wrap}.cvbox-wrap{font-size:12px;line-height:1.9;white-space:pre-wrap}</style></head><body>'+box.outerHTML+'</body></html>';
+    var blob = new Blob([h], {type:'text/html'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a'); a.href = url; a.download = 'cv.html';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+    alert('تم التحميل!\nافتح الملف في المتصفح ثم اطبعه كـ PDF');
+  };
+}
+
+document.getElementById('genNormal').onclick = function() {
+  var name = document.getElementById('n-name').value.trim();
+  if (!name) { alert('أدخل اسمك'); return; }
+  var data = {name:name, phone:document.getElementById('n-phone').value, email:document.getElementById('n-email').value, major:document.getElementById('n-major').value, job:document.getElementById('n-job').value, skills:document.getElementById('n-skills').value, exp:document.getElementById('n-exp').value};
+  showCvRes('res-normal', buildCV(data, cvLangs.normal, 'normal'));
+};
+
+document.getElementById('genAts').onclick = function() {
+  var name = document.getElementById('a-name').value.trim();
+  if (!name) { alert('أدخل اسمك'); return; }
+  var data = {name:name, phone:document.getElementById('a-phone').value, email:document.getElementById('a-email').value, major:document.getElementById('a-major').value, job:document.getElementById('a-job').value, skills:document.getElementById('a-skills').value, exp:document.getElementById('a-exp').value};
+  showCvRes('res-ats', buildCV(data, cvLangs.ats, 'ats'));
+};
+
+document.getElementById('genAi').onclick = function() {
+  var name = document.getElementById('ai-name').value.trim();
+  var job = document.getElementById('ai-job').value.trim();
+  if (!name || !job) { alert('أدخل الاسم والمسمى'); return; }
+  var r = document.getElementById('res-ai');
+  r.innerHTML = '<div class="loading"><div class="sp"></div>الذكاء الاصطناعي يصمم سيرتك...</div>';
+  var lang = cvLangs.ai;
+  var langTxt = lang === 'ar' ? 'باللغة العربية' : lang === 'en' ? 'In English' : 'باللغتين العربية ثم الإنجليزية';
+  var p = 'اكتب سيرة ذاتية احترافية ' + langTxt + ' للشخص: الاسم: ' + name + ', التخصص: ' + document.getElementById('ai-major').value + ', الجامعة: ' + document.getElementById('ai-univ').value + ', المسمى: ' + job + ', المهارات: ' + document.getElementById('ai-skills').value + ', الخبرات: ' + document.getElementById('ai-exp').value + '. اكتب السيرة فقط.';
+  callAI(p, 1000, function(err, txt) {
+    if (err) { r.innerHTML = '<div style="color:var(--re);padding:10px;font-size:12px">خطأ: ' + err + '</div>'; return; }
+    var isEn = lang === 'en';
+    var html = '<div class="cvbox'+(isEn?' en':'')+' cvbox-wrap" style="direction:'+(isEn?'ltr':'rtl')+'">'+txt.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</div>';
+    showCvRes('res-ai', html);
+  });
+};
+
+var intQs = ['عرّفني على نفسك وما الذي يجعلك مناسباً لهذه الوظيفة؟','ما هي أبرز مهاراتك؟','أخبرني عن موقف صعب واجهته وكيف تعاملت معه؟','أين ترى نفسك بعد 3 سنوات؟','لماذا اخترت هذا التخصص؟','كيف تتعامل مع ضغط العمل؟','ما أكبر إنجاز حققته؟','كيف تتعامل مع الانتقادات؟'];
+var intIdx = 0; var intJob = '';
+
+document.getElementById('startInt').onclick = function() {
+  intJob = document.getElementById('int-job').value || 'مراقب جودة'; intIdx = 0;
+  document.getElementById('intCard').style.display = 'block';
+  document.getElementById('chatBox').innerHTML = '';
+  addMsg('ai', 'سنبدأ مقابلة لوظيفة "' + intJob + '". جاهز؟');
+  setTimeout(askQ, 500);
+};
+
+function addMsg(type, text) {
+  var box = document.getElementById('chatBox');
+  var d = document.createElement('div'); d.className = 'msg ' + type; d.textContent = text;
+  box.appendChild(d); box.scrollTop = box.scrollHeight;
+}
+
+function askQ() { addMsg('ai', intQs[intIdx % intQs.length]); intIdx++; }
+
+document.getElementById('sendBtn').onclick = sendAns;
+document.getElementById('chatInp').onkeydown = function(e) { if (e.key === 'Enter') sendAns(); };
+
+function sendAns() {
+  var inp = document.getElementById('chatInp');
+  var ans = inp.value.trim(); if (!ans) return;
+  addMsg('user', ans); inp.value = '';
+  var fb = document.createElement('div'); fb.className = 'msg fb'; fb.innerHTML = '<div class="sp" style="width:16px;height:16px;margin:0 auto"></div>';
+  document.getElementById('chatBox').appendChild(fb); document.getElementById('chatBox').scrollTop = 99999;
+  var q = intQs[(intIdx-1) % intQs.length];
+  callAI('محاور وظيفي. وظيفة: "'+intJob+'". السؤال: '+q+'. إجابة المتقدم: '+ans+'. قيّم في 2-3 جمل: قوة وتحسين ونصيحة.', 200, function(err, txt) {
+    fb.textContent = '💡 ' + (err ? 'إجابة جيدة! أضف أمثلة من تجربتك.' : txt);
+    setTimeout(askQ, 700);
+  });
+}
+
+document.getElementById('nextQBtn').onclick = askQ;
+document.getElementById('endIntBtn').onclick = function() { addMsg('ai', 'انتهت المقابلة! أداؤك جيد. بالتوفيق!'); };
+
+document.getElementById('calcSalBtn').onclick = function() {
+  var job = document.getElementById('sal-job').value.toLowerCase();
+  var expVal = parseInt(document.getElementById('sal-exp').value);
+  var rm = parseFloat(document.getElementById('sal-region').value);
+  var salMap = [{k:['مراقب جودة','quality'],mn:6000,mx:11000},{k:['مهندس برمجيات','software'],mn:10000,mx:22000},{k:['مهندس كهربائي','electrical'],mn:8500,mx:16000},{k:['محاسب','accountant'],mn:6500,mx:13000},{k:['it','تقنية','شبكات'],mn:9000,mx:20000},{k:['طبيب','doctor'],mn:15000,mx:35000},{k:['مدير','manager'],mn:12000,mx:25000},{k:['تسويق','marketing'],mn:6000,mx:14000},{k:['كيمياء','chemistry'],mn:5500,mx:11000},{k:['مبيعات','sales'],mn:5000,mx:12000}];
+  var mn = 5000, mx = 9000;
+  for (var i = 0; i < salMap.length; i++) {
+    if (salMap[i].k.some(function(k){ return job.indexOf(k) !== -1; })) { mn = salMap[i].mn; mx = salMap[i].mx; break; }
+  }
+  var em = {0:1,1:1.12,2:1.3,5:1.55,7:1.85}[expVal] || 1;
+  var min = Math.round(mn*em*rm/500)*500;
+  var max = Math.round(mx*em*rm/500)*500;
+  var mid = Math.round((min+max)/2/500)*500;
+  var et = document.getElementById('sal-exp').options[document.getElementById('sal-exp').selectedIndex].text;
+  var rt = document.getElementById('sal-region').options[document.getElementById('sal-region').selectedIndex].text;
+  document.getElementById('salRes').innerHTML = '<div class="sal-res"><div style="font-size:10px;color:var(--mu);margin-bottom:4px">الراتب الشهري المتوقع</div><div class="sal-num">'+mid.toLocaleString()+' ريال</div><div class="sal-range">النطاق: '+min.toLocaleString()+' — '+max.toLocaleString()+' ريال</div><div class="sal-chips" style="margin-top:8px"><span class="sch">📍 '+rt+'</span><span class="sch">⏱️ '+et+'</span></div><p style="font-size:9px;color:var(--mu);margin-top:7px">تقديرات استرشادية — السوق السعودي 2024</p></div>';
+};
+
+var apps = [];
+document.getElementById('app-date').value = new Date().toISOString().split('T')[0];
+
+document.getElementById('addAppBtn').onclick = function() {
+  var job = document.getElementById('app-job').value.trim();
+  var co = document.getElementById('app-co').value.trim();
+  if (!job || !co) { alert('أدخل المسمى واسم الشركة'); return; }
+  apps.unshift({id:Date.now(), job:job, co:co, date:document.getElementById('app-date').value, status:document.getElementById('app-status').value});
+  document.getElementById('app-job').value = ''; document.getElementById('app-co').value = '';
+  renderApps();
+};
+
+document.getElementById('sortApps').onchange = renderApps;
+
+function renderApps() {
+  var sort = document.getElementById('sortApps').value;
+  var sorted = apps.slice();
+  var so = {accepted:0,interview:1,pending:2,rejected:3};
+  if (sort === 'date-asc') sorted.sort(function(a,b){return a.id-b.id;});
+  else if (sort === 'status') sorted.sort(function(a,b){return (so[a.status]||9)-(so[b.status]||9);});
+  document.getElementById('st-total').textContent = apps.length;
+  document.getElementById('st-pend').textContent = apps.filter(function(a){return a.status==='pending';}).length;
+  document.getElementById('st-int').textContent = apps.filter(function(a){return a.status==='interview';}).length;
+  document.getElementById('st-acc').textContent = apps.filter(function(a){return a.status==='accepted';}).length;
+  if (!sorted.length) { document.getElementById('appsList').innerHTML = '<div style="text-align:center;color:var(--mu);padding:18px;font-size:12px">ما أضفت تقديمات بعد</div>'; return; }
+  document.getElementById('appsList').innerHTML = sorted.map(function(a) {
+    return '<div class="app"><div class="app-inf"><div class="app-t">'+a.job+'</div><div class="app-s">'+a.co+(a.date?' · '+a.date:'')+'</div></div><select class="app-sel" data-id="'+a.id+'"><option value="pending"'+(a.status==='pending'?' selected':'')+'>⏳</option><option value="interview"'+(a.status==='interview'?' selected':'')+'>📅</option><option value="accepted"'+(a.status==='accepted'?' selected':'')+'>✅</option><option value="rejected"'+(a.status==='rejected'?' selected':'')+'>❌</option></select><button class="app-del" data-id="'+a.id+'">🗑️</button></div>';
+  }).join('');
+  document.querySelectorAll('.app-sel').forEach(function(sel) {
+    sel.onchange = function() { var app = apps.find(function(a){return a.id===parseInt(sel.dataset.id);}); if(app){app.status=sel.value; renderApps();} };
+  });
+  document.querySelectorAll('.app-del').forEach(function(btn) {
+    btn.onclick = function() {
+      var app = apps.find(function(a){return a.id===parseInt(btn.dataset.id);});
+      if (confirm('حذف "' + (app?app.job:'') + '"؟')) { apps = apps.filter(function(a){return a.id!==parseInt(btn.dataset.id);}); renderApps(); }
+    };
+  });
+}
+renderApps();
+
+document.getElementById('anaBtn').onclick = function() {
+  var text = document.getElementById('anaInp').value.trim();
+  if (!text) { alert('الصق الإعلان أولاً'); return; }
+  var r = document.getElementById('anaRes');
+  r.innerHTML = '<div class="loading"><div class="sp"></div>جاري التحليل...</div>';
+  callAI('حلّل إعلان الوظيفة وأعد JSON فقط: {"title":"","requirements":[""],"skills":[""],"keywords":[""],"tips":[""]}\n\n' + text, 700, function(err, txt) {
+    if (err) { r.innerHTML = '<div style="color:var(--re);padding:10px;font-size:12px">خطأ: '+err+'</div>'; return; }
+    try {
+      var m = txt.match(/\{[\s\S]*\}/);
+      var j = JSON.parse(m ? m[0] : txt);
+      r.innerHTML = '<div style="background:var(--sur);border:1px solid var(--bor);border-radius:10px;padding:14px;margin-top:10px">'+
+        '<div style="margin-bottom:10px"><div style="font-size:10px;color:var(--mu);margin-bottom:6px">💼 المسمى</div><div class="chips"><span class="chip b">'+(j.title||'—')+'</span></div></div>'+
+        '<div style="margin-bottom:10px"><div style="font-size:10px;color:var(--mu);margin-bottom:6px">📋 المتطلبات</div><div class="chips">'+(j.requirements||[]).map(function(x){return '<span class="chip r">'+x+'</span>';}).join('')+'</div></div>'+
+        '<div style="margin-bottom:10px"><div style="font-size:10px;color:var(--mu);margin-bottom:6px">🛠️ المهارات</div><div class="chips">'+(j.skills||[]).map(function(x){return '<span class="chip o">'+x+'</span>';}).join('')+'</div></div>'+
+        '<div style="margin-bottom:10px"><div style="font-size:10px;color:var(--mu);margin-bottom:6px">🔑 أضفها في سيرتك</div><div class="chips">'+(j.keywords||[]).map(function(x){return '<span class="chip g">'+x+'</span>';}).join('')+'</div></div>'+
+        '<div><div style="font-size:10px;color:var(--mu);margin-bottom:6px">💡 نصائح</div><div class="chips">'+(j.tips||[]).map(function(x){return '<span class="chip">'+x+'</span>';}).join('')+'</div></div>'+
+        '</div>';
+    } catch(e) { r.innerHTML = '<div style="color:var(--re);padding:10px;font-size:12px">خطأ في التحليل</div>'; }
+  });
+};
+
+var specsData = {
+  chem:{icon:'⚗️',name:'كيمياء',fields:['مراقبة الجودة','مختبرات التحليل','صناعة أدوية','سلامة غذائية','تدريس'],courses:['ISO 9001','Six Sigma','GC/HPLC','سلامة المختبرات','تحليل كيميائي']},
+  chem_ind:{icon:'🏭',name:'كيمياء صناعية',fields:['مصانع البتروكيماويات','مراقبة الجودة الصناعية','تطوير المنتجات','إدارة العمليات','سلامة وبيئة'],courses:['ISO 9001','HAZOP','Six Sigma','Process Safety','GMP']},
+  chem_env:{icon:'🌿',name:'كيمياء بيئية',fields:['تقييم الأثر البيئي','معالجة المياه','رقابة التلوث','استشارات بيئية','بحث وتطوير'],courses:['ISO 14001','تحليل بيئي','معالجة مياه','REACH','استدامة']},
+  physics:{icon:'⚛️',name:'فيزياء',fields:['هندسة الطاقة','أشعة طبية','بحث وتطوير','اختبار المواد','تدريس'],courses:['طاقة متجددة','فيزياء طبية','AutoCAD','Python','PMP']},
+  math:{icon:'📐',name:'رياضيات',fields:['تحليل البيانات','أكتواري','برمجة','مالية','تدريس'],courses:['Python','Data Science','Power BI','Machine Learning','CFA']},
+  bio:{icon:'🧬',name:'أحياء',fields:['مختبرات طبية','صناعة أدوية','سلامة الغذاء','علوم صحية','أكاديميا'],courses:['PCR','ISO 22000','GMP','علم الأوبئة','IATA']},
+  cs:{icon:'💻',name:'حاسب آلي',fields:['تطوير تطبيقات','أمن معلومات','ذكاء اصطناعي','قواعد بيانات','DevOps'],courses:['AWS/Azure','CompTIA Security+','React/Flutter','Docker','CCNA']},
+  law:{icon:'⚖️',name:'محاماة',fields:['محاماة وتوثيق','قانون تجاري','قانون عمالي','قضايا الشركات','استشارات قانونية'],courses:['تحكيم تجاري','قانون العقود','CIPP','قانون الملكية','نظام العمل']},
+  accounting:{icon:'📊',name:'محاسبة',fields:['مراجعة وتدقيق','محاسبة مالية','ضرائب وزكاة','تحليل مالي','إدارة المخاطر'],courses:['CPA','SOCPA','CMA','ZATCA','Excel مالي']},
+  finance:{icon:'💰',name:'تمويل واستثمار',fields:['تحليل الاستثمارات','أسواق المال','إدارة المحافظ','تمويل الشركات','صناديق الاستثمار'],courses:['CFA','CFP','Bloomberg','تحليل فني','نظام ساما']},
+  ai:{icon:'🤖',name:'ذكاء اصطناعي',fields:['تطوير نماذج AI','تحليل البيانات','رؤية حاسوبية','معالجة اللغة','بحث وتطوير'],courses:['TensorFlow/PyTorch','Python ML','Deep Learning','MLOps','ChatGPT API']},
+  programming:{icon:'👨‍💻',name:'برمجة',fields:['تطوير الويب','تطوير التطبيقات','برمجة الأنظمة','DevOps','قواعد البيانات'],courses:['Python/Java/C++','React/Angular','Node.js','SQL/NoSQL','Git']},
+  cyber:{icon:'🔐',name:'أمن سيبراني',fields:['أمن الشبكات','اختبار الاختراق','استجابة للحوادث','حماية البيانات','أمن السحابة'],courses:['CompTIA Security+','CEH','CISSP','CCNA Security','SOC Analyst']},
+  supply:{icon:'🚚',name:'سلاسل الإمداد',fields:['إدارة المخزون','لوجستيات وشحن','شراء وتوريد','تخطيط الإنتاج','تحسين سلاسل التوريد'],courses:['CPIM','CSCM','SAP SCM','Lean Six Sigma','إدارة العقود']},
+  software_eng:{icon:'⚙️',name:'هندسة برمجيات',fields:['تصميم الأنظمة','ضمان الجودة','إدارة مشاريع تقنية','معمارية الحلول','Agile'],courses:['AWS Solutions Architect','Agile/Scrum','TOGAF','UML','PMP']},
+  app_dev:{icon:'📱',name:'تطوير تطبيقات',fields:['تطبيقات iOS/Android','تطوير الويب','تطبيقات الأعمال','واجهات المستخدم','نشر التطبيقات'],courses:['Flutter/React Native','Swift/Kotlin','Firebase','App Store','UX Design']},
+  medicine:{icon:'🩺',name:'طب بشري',fields:['طب عام','تخصصات طبية','بحث طبي','إدارة صحية','طوارئ'],courses:['SMLE','BLS/ACLS','سعودي بورد','طب المجتمع','صحة رقمية']},
+  hr:{icon:'👥',name:'موارد بشرية',fields:['اكتساب المواهب','تطوير الموظفين','ثقافة المنظمة','قيادة الفرق','تخطيط استراتيجي'],courses:['SHRM-CP','PHR','نظام العمل','Leadership','OKR & KPI']},
+  nursing:{icon:'💊',name:'تمريض وصحة',fields:['تمريض سريري','إدارة مستشفيات','جودة الرعاية','سلامة المرضى','طوارئ'],courses:['NCLEX','BLS/ACLS','إدارة صحية','JCI','سجلات إلكترونية']},
+  energy:{icon:'☀️',name:'طاقة متجددة',fields:['طاقة شمسية وريحية','كفاءة الطاقة','استدامة','هيدروجين','سياسات الطاقة'],courses:['LEED Green','PV Solar','IRENA','طاقة الرياح','ISO 50001']},
+  tourism:{icon:'🏨',name:'سياحة وفندقة',fields:['إدارة فنادق','تنظيم فعاليات','سياحة ثقافية','ضيافة','تخطيط السفر'],courses:['MICE','CMP','إدارة فنادق','خدمة 5 نجوم','Vision 2030']},
+  marketing:{icon:'📣',name:'تسويق رقمي',fields:['تسويق التواصل','إعلانات رقمية','تجارة إلكترونية','تحليل بيانات','SEO'],courses:['Google Digital','Meta Blueprint','HubSpot','Google Analytics','Shopify']}
+};
+
+document.querySelectorAll('.sc').forEach(function(card) {
+  card.onclick = function() {
+    document.querySelectorAll('.sc').forEach(function(c){ c.classList.remove('on'); });
+    card.classList.add('on');
+    var s = specsData[card.dataset.spec];
+    if (!s) return;
+    document.getElementById('specDet').innerHTML = '<div class="sdet"><div class="sdet-h"><span style="font-size:22px">'+s.icon+'</span><strong style="font-size:13px">تخصص '+s.name+'</strong></div><div class="ssec-t">🎯 المجالات الوظيفية</div><div class="chips">'+s.fields.map(function(f){return '<span class="chip g">'+f+'</span>';}).join('')+'</div><div class="ssec-t">📚 الدورات الموصى بها</div><div class="chips">'+s.courses.map(function(c){return '<span class="chip b">'+c+'</span>';}).join('')+'</div></div>';
+    document.getElementById('specDet').scrollIntoView({behavior:'smooth', block:'nearest'});
+  };
+});
+
+document.getElementById('specSrch').oninput = function() {
+  var q = this.value.toLowerCase();
+  document.querySelectorAll('.sc').forEach(function(c){ c.style.display = c.querySelector('.sc-n').textContent.toLowerCase().indexOf(q) !== -1 ? '' : 'none'; });
+};
+
+var coData = {
+  aramco:{name:'أرامكو السعودية',email:'recruitment@aramco.com',field:'النفط والطاقة'},
+  sabic:{name:'سابك',email:'careers@sabic.com',field:'البتروكيماويات'},
+  stc:{name:'STC',email:'careers@stc.com.sa',field:'الاتصالات'},
+  maaden:{name:'معادن',email:'careers@maaden.com.sa',field:'التعدين'},
+  saudiairlines:{name:'الخطوط السعودية',email:'careers@saudiairlines.com',field:'الطيران'},
+  sec:{name:'شركة الكهرباء',email:'careers@se.com.sa',field:'الطاقة'},
+  mobily:{name:'موبايلي',email:'careers@mobily.com.sa',field:'الاتصالات'},
+  alrajhi:{name:'مصرف الراجحي',email:'careers@alrajhibank.com.sa',field:'البنوك'},
+  ncb:{name:'البنك الأهلي',email:'careers@alahli.com',field:'البنوك'},
+  pif:{name:'صندوق الاستثمارات',email:'careers@pif.gov.sa',field:'الاستثمار'},
+  neom:{name:'نيوم',email:'careers@neom.com',field:'التطوير'},
+  sdaia:{name:'سدايا',email:'careers@sdaia.gov.sa',field:'الذكاء الاصطناعي'},
+  moh:{name:'وزارة الصحة',email:'jobs@moh.gov.sa',field:'الصحة'},
+  zatca:{name:'هيئة الزكاة والضريبة',email:'careers@zatca.gov.sa',field:'المالية'},
+  tasnee:{name:'تصنيع',email:'careers@tasnee.com',field:'الصناعة'},
+  total:{name:'TotalEnergies',email:'careers@totalenergies.com',field:'الطاقة'}
+};
+
+var selCo = null;
+
+document.querySelectorAll('.co-card').forEach(function(card) {
+  card.onclick = function() { document.querySelectorAll('.co-card').forEach(function(c){ c.classList.remove('on'); }); card.classList.add('on'); selCo = card.dataset.co; };
+});
+
+document.getElementById('coSearch').oninput = function() {
+  var q = this.value.toLowerCase();
+  document.querySelectorAll('.co-card').forEach(function(c){ c.style.display = (c.querySelector('.co-name').textContent.toLowerCase().indexOf(q) !== -1) ? '' : 'none'; });
+};
+
+document.getElementById('genEmailBtn').onclick = function() {
+  var name = document.getElementById('ap-name').value.trim();
+  var job = document.getElementById('ap-job').value.trim();
+  if (!name) { alert('أدخل اسمك أولاً'); return; }
+  if (!selCo) { alert('اختر شركة أولاً'); return; }
+  if (!job) { alert('أدخل المسمى الوظيفي المستهدف'); return; }
+  var co = coData[selCo];
+  var r = document.getElementById('emailResult');
+  r.innerHTML = '<div class="loading"><div class="sp"></div>الذكاء الاصطناعي يكتب رسالتك...</div>';
+  var p = 'اكتب رسالة تقديم وظيفي احترافية باللغة العربية. الاسم: ' + name + '. الجوال: ' + document.getElementById('ap-phone').value + '. البريد: ' + document.getElementById('ap-email').value + '. التخصص: ' + document.getElementById('ap-major').value + '. المسمى: ' + job + '. المهارات: ' + document.getElementById('ap-skills').value + '. الشركة: ' + co.name + ' (' + co.field + '). اكتب الرسالة فقط بدون تعليق.';
+  callAI(p, 700, function(err, txt) {
+    if (err) { r.innerHTML = '<div style="background:var(--orl);border:1px solid var(--or);border-radius:9px;padding:12px;font-size:12px;color:var(--or)">تعذر الاتصال. تأكد من اتصالك بالإنترنت.</div>'; return; }
+    var subj = encodeURIComponent('طلب توظيف — ' + job + ' — ' + name);
+    var body = encodeURIComponent(txt);
+    r.innerHTML = '<div class="email-box">'+
+      '<div class="email-to">📧 إرسال إلى</div><div class="email-addr">'+co.email+'</div>'+
+      '<div class="email-body">'+txt+'</div>'+
+      '<div class="brow">'+
+      '<a href="mailto:'+co.email+'?subject='+subj+'&body='+body+'" class="btn sm" style="text-decoration:none">📨 فتح في الإيميل</a>'+
+      '<button class="btn sec sm" id="copyEmailBtn">📋 نسخ</button>'+
+      '</div></div>';
+    document.getElementById('copyEmailBtn').onclick = function() {
+      if (navigator.clipboard) navigator.clipboard.writeText(txt).then(function(){ alert('تم النسخ'); });
+    };
+    r.scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+};
+
+document.getElementById('trainSearch').oninput = function() {
+  var q = this.value.toLowerCase();
+  document.querySelectorAll('.train-item').forEach(function(item){
+    var name = item.querySelector('.train-name') ? item.querySelector('.train-name').textContent.toLowerCase() : '';
+    var desc = item.querySelector('.train-desc') ? item.querySelector('.train-desc').textContent.toLowerCase() : '';
+    item.style.display = (name.indexOf(q) !== -1 || desc.indexOf(q) !== -1) ? '' : 'none';
+  });
+};
+
+document.getElementById('compareBtn').onclick = function() {
+  var c1co = document.getElementById('c1-co').value.trim();
+  var c2co = document.getElementById('c2-co').value.trim();
+  if (!c1co || !c2co) { alert('أدخل اسم الشركتين'); return; }
+  var sal1 = parseInt(document.getElementById('c1-sal').value) || 0;
+  var sal2 = parseInt(document.getElementById('c2-sal').value) || 0;
+  var gr1 = parseInt(document.getElementById('c1-growth').value) || 0;
+  var gr2 = parseInt(document.getElementById('c2-growth').value) || 0;
+  var rows = [
+    {label:'الشركة', v1:c1co, v2:c2co, b:0},
+    {label:'الراتب', v1:sal1?sal1.toLocaleString()+' ريال':'—', v2:sal2?sal2.toLocaleString()+' ريال':'—', b:sal1>sal2?1:sal2>sal1?2:0},
+    {label:'الموقع', v1:document.getElementById('c1-loc').value||'—', v2:document.getElementById('c2-loc').value||'—', b:0},
+    {label:'ساعات', v1:document.getElementById('c1-hours').value||'—', v2:document.getElementById('c2-hours').value||'—', b:0},
+    {label:'تأمين', v1:document.getElementById('c1-med').value||'—', v2:document.getElementById('c2-med').value||'—', b:0},
+    {label:'الترقي', v1:gr1?gr1+'/5':'—', v2:gr2?gr2+'/5':'—', b:gr1>gr2?1:gr2>gr1?2:0}
+  ];
+  var tableHtml = '<div class="cres">'+rows.map(function(r){
+    var cls1 = r.b===1?'win':r.b===2?'lose':'';
+    var cls2 = r.b===2?'win':r.b===1?'lose':'';
+    return '<div class="crow"><div class="cval '+cls1+'">'+r.v1+'</div><div class="clabel">'+r.label+'</div><div class="cval '+cls2+'">'+r.v2+'</div></div>';
+  }).join('')+'</div>';
+  var winner = sal1>sal2?c1co:sal2>sal1?c2co:'متقارب';
+  var winnerHtml = '<div class="cwinner"><div style="font-size:18px;margin-bottom:5px">🏆</div><div class="cwinner-t">'+winner+'</div><div style="font-size:11px;color:var(--gr);margin-top:3px">التوصية الأولية بناءً على الراتب وفرص الترقي</div></div>';
+  document.getElementById('compareRes').innerHTML = tableHtml + winnerHtml;
+  document.getElementById('compareRes').scrollIntoView({behavior:'smooth', block:'nearest'});
+};
+</script>
+</body>
+</html>
